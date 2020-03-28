@@ -34,6 +34,7 @@ function getText(){
             document.getElementById('mainText').value = '//Current document has been deleted';
             clearInterval(getTextInterval)
             document.getElementById('link').style.display = 'none';
+            document.getElementById('delete_btn').style.display = 'none';
         }
     })
 }
