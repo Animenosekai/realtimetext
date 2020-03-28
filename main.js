@@ -10,7 +10,7 @@ function createDoc(){
     .then(function(response){
         var document_url = response.headers.location
         window.localStorage.setItem('document_url', document_url)
-        var newDocURL = "https://realtimetextedit.netlify.com/index.html?id=" + document_url.replace('https://jsonblob.com/api/jsonBlob/', '')
+        var newDocURL = "https://realtimetextedit.netlify.com/?id=" + document_url.replace('https://jsonblob.com/api/jsonBlob/', '')
         document.getElementById('document_url').setAttribute('value', newDocURL)
         console.log('Document created!')
         window.open(newDocURL, '_self')
@@ -87,7 +87,7 @@ window.onload = function(){
     const documentID = urlParams.get('id');
     if(documentID !== null){
     window.localStorage.setItem('document_url', 'https://jsonblob.com/api/jsonBlob/' + documentID);
-    document.getElementById('document_url').setAttribute('value', "https://realtimetextedit.netlify.com/index.html?id=" + documentID)
+    document.getElementById('document_url').setAttribute('value', "https://realtimetextedit.netlify.com/?id=" + documentID)
     this.getText()
 }else if(documentID === null){
     this.createDoc()
