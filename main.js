@@ -6,8 +6,10 @@ function createDoc(){
     .then(function(response){
         var document_url = response.headers.location
         window.localStorage.setItem('document_url', document_url)
-        document.getElementById('document_url').innerHTML = 'The url of this document is: ' + "https://realtimetextedit.netlify.com/index.html?id=" + document_url.replace('https://jsonblob.com/api/jsonBlob/', '')
+        var newDocURL = "https://realtimetextedit.netlify.com/index.html?id=" + document_url.replace('https://jsonblob.com/api/jsonBlob/', '')
+        document.getElementById('document_url').innerHTML = 'The url of this document is: ' + newDocURL
         console.log('Document created!')
+        window.open(newDocURL, '_self')
     })
 }
 
