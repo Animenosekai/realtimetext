@@ -72,6 +72,7 @@ function deleteDoc(){
     .then(function(){
         clearInterval(getTextInterval)
         document.getElementById('link').style.display = 'none';
+        document.getElementById('delete_btn').style.display = 'none';
         document.getElementById('mainText').value = 'Deleted!'
     })
 }
