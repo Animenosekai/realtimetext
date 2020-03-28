@@ -33,7 +33,7 @@ function getText(){
         if(error.status === 404){
             document.getElementById('mainText').value = '//Current document has been deleted'
         }
-    }
+    })
 }
     },1000)
 }
