@@ -58,13 +58,22 @@ function putText(){
 
 function deleteDoc(){
     axios({
-        method: 'delete',
-        url: window.localStorage.getItem('document_url')
+        method: 'put',
+        url: window.localStorage.getItem('document_url'),
+        data: {
+            text: 'Current document deleted'
+        }
     })
     .then(function(){
-        clearInterval(getTextInterval)
-        document.getElementById('link').style.display = 'none';
-        document.getElementById('mainText').value = 'Deleted!'
+        axios({
+            method: 'delete',
+            url: window.localStorage.getItem('document_url')
+        })
+        .then(function(){
+            clearInterval(getTextInterval)
+            document.getElementById('link').style.display = 'none';
+            document.getElementById('mainText').value = 'Deleted!'
+        })
     })
 }
 
