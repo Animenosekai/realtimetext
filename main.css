@@ -109,6 +109,8 @@
 .githubicon{
     height: 64px;
     opacity: 0.8;
+    margin-top: -80px;
+    transform: translateY(-35px) translateX(20px);
 }
 
 .githubicon:hover{
