@@ -57,6 +57,9 @@ function putText(){
 }
 
 function deleteDoc(){
+    clearInterval(getTextInterval)
+    document.getElementById('link').style.display = 'none';
+    document.getElementById('mainText').value = 'Deleted!'
     axios({
         method: 'put',
         url: window.localStorage.getItem('document_url'),
@@ -65,15 +68,12 @@ function deleteDoc(){
         }
     })
     .then(function(){
+        setTimeout(function(){
         axios({
             method: 'delete',
             url: window.localStorage.getItem('document_url')
         })
-        .then(function(){
-            clearInterval(getTextInterval)
-            document.getElementById('link').style.display = 'none';
-            document.getElementById('mainText').value = 'Deleted!'
-        })
+    },1000)
     })
 }
 
