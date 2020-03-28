@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RealTime Text Editor</title>
+
+    <link rel="stylesheet" type="text/css" href="main.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="/main.js"></script>
+</head>
+<body>
+    <button onclick="createDoc()">Create a doc!</button>
+    <p id="document_url"></p>
+    <textarea name="mainText" id="mainText" cols="30" rows="10" onkeyup="putText()"></textarea>
+</body>
+</html>
