@@ -20,7 +20,7 @@ function createDoc(){
 var getTextInterval
 function getText(){
     getTextInterval = setInterval(function(){
-        if(window.localStorage.getItem('proceed') === true){
+    if(window.localStorage.getItem('proceed') === 'true'){
     axios({
         method: 'get',
         url: window.localStorage.getItem('document_url')
