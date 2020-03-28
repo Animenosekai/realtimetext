@@ -26,7 +26,7 @@ function getText(){
         url: window.localStorage.getItem('document_url')
     })
     .then(function(response){
-        if(response.data.text !== null){
+        if(response.data.text !== ''){
         var newText = response.data.text
         document.getElementById('mainText').value = newText
     }
