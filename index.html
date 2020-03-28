@@ -11,18 +11,42 @@
   gtag('config', 'UA-155165028-2');
 </script>
 
+<!--author: Anime no Sekai© - 2020-->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RealTime Text Editor</title>
 
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="/main.js"></script>
 </head>
+
+
 <body>
-    <button onclick="createDoc()">Create a doc!</button>
+    <p id="title">RealTime Text Editor</p>
+    <div id="buttons">
+    <button class="button" onclick="createDoc()">Create a doc!</button>
+    <button class="button" style="background: rgb(255, 64, 64);" onclick="deleteDoc()">Delete</button>
+</div>
+<div id="link">
+<input onfocus="copyText()" type="text" id="document_url" readonly>
+
+<div class="tooltip">
+    <button id="copyUrlButton" onclick="copyText()" onmouseout="outFunc()">
+      <span class="tooltiptext" id="copyingtoclipboard">Copy to clipboard</span>
+      Copy URL
+      </button>
+</div>
+</div>
+
     <p id="document_url"></p>
     <textarea name="mainText" id="mainText" cols="30" rows="10" onkeyup="putText()"></textarea>
+    <div id="credit">
+    <p>RealTime Text Editor - Anime no Sekai©</p>
+    <p>Version 2.0</p>
+</div>
 </body>
 </html>

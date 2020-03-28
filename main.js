@@ -1,3 +1,7 @@
+//author: Anime no Sekai © - 2020
+
+
+
 function createDoc(){
     axios({
         method: 'post',
@@ -7,7 +11,7 @@ function createDoc(){
         var document_url = response.headers.location
         window.localStorage.setItem('document_url', document_url)
         var newDocURL = "https://realtimetextedit.netlify.com/index.html?id=" + document_url.replace('https://jsonblob.com/api/jsonBlob/', '')
-        document.getElementById('document_url').innerHTML = 'The url of this document is: ' + newDocURL
+        document.getElementById('document_url').setAttribute('value', newDocURL)
         console.log('Document created!')
         window.open(newDocURL, '_self')
     })
@@ -50,6 +54,18 @@ function putText(){
 }
 }
 
+function deleteDoc(){
+    axios({
+        method: 'delete',
+        url: window.localStorage.getItem('document_url')
+    })
+    .then(function(){
+        clearInterval(getTextInterval)
+        document.getElementById('link').style.display = 'none';
+    })
+}
+
+
 window.onload = function(){
     window.localStorage.setItem('proceed', 'true');
     console.log('Initialization...')
@@ -57,9 +73,26 @@ window.onload = function(){
     const documentID = urlParams.get('id');
     if(documentID !== null){
     window.localStorage.setItem('document_url', 'https://jsonblob.com/api/jsonBlob/' + documentID);
-    document.getElementById('document_url').innerHTML = 'The url of this document is: ' + "https://realtimetextedit.netlify.com/index.html?id=" + documentID
+    document.getElementById('document_url').setAttribute('value', "https://realtimetextedit.netlify.com/index.html?id=" + documentID)
     this.getText()
 }else if(documentID === null){
     this.createDoc()
 }
 }
+
+
+
+function copyText(){
+    var copyText = document.getElementById("document_url");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    
+    var tooltip = document.getElementById("copyingtoclipboard");
+    tooltip.innerHTML = "URL Copied!";
+  }
+  
+function outFunc(){
+    var tooltip = document.getElementById("copyingtoclipboard");
+    tooltip.innerHTML = "Copy to clipboard";
+  }
