@@ -103,3 +103,14 @@
     flex-direction: column;
     text-align: right;
 }
+
+
+
+.githubicon{
+    height: 64px;
+    opacity: 0.8;
+}
+
+.githubicon:hover{
+    opacity: 1;
+}
