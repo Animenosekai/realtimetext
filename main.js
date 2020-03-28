@@ -29,6 +29,11 @@ function getText(){
         var newText = response.data.text
         document.getElementById('mainText').value = newText
     })
+    .catch(function(error){
+        if(error.status === 404){
+            document.getElementById('mainText').value = '//Current document has been deleted'
+        }
+    }
 }
     },1000)
 }
@@ -57,23 +62,14 @@ function putText(){
 }
 
 function deleteDoc(){
-    clearInterval(getTextInterval)
-    document.getElementById('link').style.display = 'none';
-    document.getElementById('mainText').value = 'Deleted!'
     axios({
-        method: 'put',
-        url: window.localStorage.getItem('document_url'),
-        data: {
-            text: 'Current document deleted'
-        }
+        method: 'delete',
+        url: window.localStorage.getItem('document_url')
     })
     .then(function(){
-        setTimeout(function(){
-        axios({
-            method: 'delete',
-            url: window.localStorage.getItem('document_url')
-        })
-    },1000)
+        clearInterval(getTextInterval)
+        document.getElementById('link').style.display = 'none';
+        document.getElementById('mainText').value = 'Deleted!'
     })
 }
 
