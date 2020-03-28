@@ -20,6 +20,7 @@ function createDoc(){
 var getTextInterval
 function getText(){
     getTextInterval = setInterval(function(){
+        if(window.localStorage.getItem('proceed') === true){
     axios({
         method: 'get',
         url: window.localStorage.getItem('document_url')
@@ -28,6 +29,7 @@ function getText(){
         var newText = response.data.text
         document.getElementById('mainText').value = newText
     })
+}
     },1000)
 }
 
