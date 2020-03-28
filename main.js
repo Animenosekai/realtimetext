@@ -32,6 +32,7 @@ function getText(){
     .catch(function(error){
         if(error.response.status === 404){
             document.getElementById('mainText').value = '//Current document has been deleted';
+            document.getElementById('mainText').setAttribute('readonly')
             clearInterval(getTextInterval)
             document.getElementById('link').style.display = 'none';
             document.getElementById('delete_btn').style.display = 'none';
@@ -74,6 +75,7 @@ function deleteDoc(){
         document.getElementById('link').style.display = 'none';
         document.getElementById('delete_btn').style.display = 'none';
         document.getElementById('mainText').value = 'Deleted!'
+        document.getElementById('mainText').setAttribute('readonly')
     })
 }
 
