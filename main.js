@@ -51,8 +51,11 @@ function putText(){
 window.onload = function(){
     const urlParams = new URLSearchParams(window.location.search);
     const documentID = urlParams.get('id');
+    if(documentID !== null){
     window.localStorage.setItem('document_url', 'https://jsonblob.com/api/jsonBlob/' + documentID);
     document.getElementById('document_url').innerHTML = 'The url of this document is: ' + "https://realtimetextedit.netlify.com/index.html?id=" + documentID
+    this.getText()
+}
     window.localStorage.setItem('proceed', 'true');
     console.log('Initialization...')
 }
