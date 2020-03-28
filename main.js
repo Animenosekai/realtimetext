@@ -31,7 +31,9 @@ function getText(){
     })
     .catch(function(error){
         if(error.response.status === 404){
-            document.getElementById('mainText').value = '//Current document has been deleted'
+            document.getElementById('mainText').value = '//Current document has been deleted';
+            clearInterval(getTextInterval)
+            document.getElementById('link').style.display = 'none';
         }
     })
 }
