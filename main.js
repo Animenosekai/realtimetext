@@ -30,8 +30,7 @@ function getText(){
         document.getElementById('mainText').value = newText
     })
     .catch(function(error){
-        console.log(error.status)
-        if(error.status === 404){
+        if(error.response.status === 404){
             document.getElementById('mainText').value = '//Current document has been deleted'
         }
     })
