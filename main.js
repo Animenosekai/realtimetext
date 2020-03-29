@@ -65,10 +65,12 @@ function putText(){
     })
     .catch(function(error){
         if(error.response.status === 404){
-            console.log('Document not found')
-            console.log('Trying to retrieve document infos...')
-            window.localStorage.setItem('proceed', 'true')
-            setTimeout(getText(), 100) 
+            console.log('Document has been deleted and/or is not found on the server')
+            document.getElementById('mainText').value = '//Current document has been deleted';
+            document.getElementById('mainText').setAttribute('readonly', true)
+            clearInterval(getTextInterval)
+            document.getElementById('link').style.display = 'none';
+            document.getElementById('delete_btn').style.display = 'none';
         }
     })
 }else if(proceed === false){
