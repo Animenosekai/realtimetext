@@ -33,6 +33,7 @@ function getText(){
     })
     .catch(function(error){
         if(error.response.status === 404){
+            console.log('Document has been deleted and/or is not found on the server')
             document.getElementById('mainText').value = '//Current document has been deleted';
             document.getElementById('mainText').setAttribute('readonly', true)
             clearInterval(getTextInterval)
@@ -62,6 +63,13 @@ function putText(){
         console.log('Data send!')
         setTimeout(getText(), 100)
     })
+    .catch(function(error){
+        if(error.response.status === 404){
+            console.log('Document not found')
+            console.log('Trying to retrieve document infos...')
+            setTimeout(getText(), 100) 
+        }
+    })
 }else if(proceed === false){
     setTimeout(putText(),100)
 }
@@ -74,6 +82,7 @@ function deleteDoc(){
     })
     .then(function(){
         clearInterval(getTextInterval)
+        console.log('Document deleted')
         document.getElementById('link').style.display = 'none';
         document.getElementById('delete_btn').style.display = 'none';
         document.getElementById('mainText').value = 'Deleted!'
