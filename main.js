@@ -67,6 +67,7 @@ function putText(){
         if(error.response.status === 404){
             console.log('Document not found')
             console.log('Trying to retrieve document infos...')
+            window.localStorage.setItem('proceed', 'true')
             setTimeout(getText(), 100) 
         }
     })
